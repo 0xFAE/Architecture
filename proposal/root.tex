@@ -1,0 +1,62 @@
+\documentclass[11pt]{article}
+\usepackage[english]{babel}
+\usepackage{inputenc}
+\usepackage{multicol}
+\usepackage{flushend}
+\usepackage{fullpage}
+\usepackage{epsfig}
+\usepackage{caption}
+\captionsetup[table]{labelsep=period}
+\usepackage{multirow}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+\topmargin=-0.2in
+\textheight=9.5in
+
+\pagestyle{empty}
+
+\begin{document}
+
+\centerline{CSCE 614 (Fall 2020) \hfill Uwacu and \textcolor{red}{lastname}}
+\medskip
+\centerline{\bf Computer Architecture}
+\medskip
+
+\centerline{\bf  Project proposal: }
+
+\bigskip
+
+\centerline{\bf Exploring Predictive Replacemebt Policies for Instruction Cache and Branch Target Buffer}
+
+\bigskip
+
+\centerline{\bf Diane Uwacu and Fatma \textcolor{red}{lastname}}
+
+\bigskip
+
+\begin{abstract}
+	For our final project, we will implement a global history replacement policy for instruction cache and branch target buffer.
+	The method was proven to lower instruction cache MPKI by an average of 18\% over the least recently-used policy, and it showed
+	similar improvements over several other policies.
+	We plan to implement and validate the results in the original work by comparing against at least one of the stated methods.
+ \end{abstract}
+
+\section{Introduction} 
+The instruction cache (I-cache) stores blocks of recently used instructions, and the branch target buffer (BTB) caches targets of previously taken branches. 
+This means that the I-cache improves throughput and latency while the BTB latency due to branch target re-computation, making them both essential 
+The work in \cite{samira-ISCA18} explores efficient replacement policies at the I-cache and BTB lavel.
+\section {Preliminaries and Related Work}
+\label{sec:related}
+
+ 
+{%\scriptsize
+\bibliographystyle{abbrv}
+\bibliography{references}
+}
+
+\end{document}
+
+
+
