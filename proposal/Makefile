@@ -18,6 +18,6 @@ $(document).pdf: $(document).tex
 .PHONY: clean
 clean:
 	@echo Cleaning temporary files...
-	@rm -f *.out *.aux *.bbl *.dvi *.log *.pdf *.ps
+	@rm -f *.out *.aux *.bbl  *.blg *.dvi *.log *.pdf *.ps
 
 #------------------------------------------------------------------#
