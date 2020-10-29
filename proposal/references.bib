@@ -62,3 +62,89 @@
 	numpages = {17},
 	keywords = {complexity, least recently used, performance penalty, instruction sets, branch target address, pipelined processors, branch target buffer design, buffer storage, caching, prediction information, branches, pipeline processing., instructions, optimization, branch tag}
 }
+
+@inproceedings{10.1145/1815961.1815971,
+	author = {Jaleel, Aamer and Theobald, Kevin B. and Steely, Simon C. and Emer, Joel},
+	title = {High Performance Cache Replacement Using Re-Reference Interval Prediction (RRIP)},
+	year = {2010},
+	isbn = {9781450300537},
+	publisher = {Association for Computing Machinery},
+	address = {New York, NY, USA},
+	url = {https://doi.org/10.1145/1815961.1815971},
+	doi = {10.1145/1815961.1815971},
+	abstract = {Practical cache replacement policies attempt to emulate optimal replacement by predicting the re-reference interval of a cache block. The commonly used LRU replacement policy always predicts a near-immediate re-reference interval on cache hits and misses. Applications that exhibit a distant re-reference interval perform badly under LRU. Such applications usually have a working-set larger than the cache or have frequent bursts of references to non-temporal data (called scans). To improve the performance of such workloads, this paper proposes cache replacement using Re-reference Interval Prediction (RRIP). We propose Static RRIP (SRRIP) that is scan-resistant and Dynamic RRIP (DRRIP) that is both scan-resistant and thrash-resistant. Both RRIP policies require only 2-bits per cache block and easily integrate into existing LRU approximations found in modern processors. Our evaluations using PC games, multimedia, server and SPEC CPU2006 workloads on a single-core processor with a 2MB last-level cache (LLC) show that both SRRIP and DRRIP outperform LRU replacement on the throughput metric by an average of 4% and 10% respectively. Our evaluations with over 1000 multi-programmed workloads on a 4-core CMP with an 8MB shared LLC show that SRRIP and DRRIP outperform LRU replacement on the throughput metric by an average of 7% and 9% respectively. We also show that RRIP outperforms LFU, the state-of the art scan-resistant replacement algorithm to-date. For the cache configurations under study, RRIP requires 2X less hardware than LRU and 2.5X less hardware than LFU.},
+	booktitle = {Proceedings of the 37th Annual International Symposium on Computer Architecture},
+	pages = {60–71},
+	numpages = {12},
+	keywords = {shared cache, thrashing, replacement, scan resistance},
+	location = {Saint-Malo, France},
+	series = {ISCA '10}
+}
+
+@article{rrip-2010,
+	author = {Jaleel, Aamer and Theobald, Kevin B. and Steely, Simon C. and Emer, Joel},
+	title = {High Performance Cache Replacement Using Re-Reference Interval Prediction (RRIP)},
+	year = {2010},
+	issue_date = {June 2010},
+	publisher = {Association for Computing Machinery},
+	address = {New York, NY, USA},
+	volume = {38},
+	number = {3},
+	issn = {0163-5964},
+	url = {https://doi.org/10.1145/1816038.1815971},
+	doi = {10.1145/1816038.1815971},
+	abstract = {Practical cache replacement policies attempt to emulate optimal replacement by predicting the re-reference interval of a cache block. The commonly used LRU replacement policy always predicts a near-immediate re-reference interval on cache hits and misses. Applications that exhibit a distant re-reference interval perform badly under LRU. Such applications usually have a working-set larger than the cache or have frequent bursts of references to non-temporal data (called scans). To improve the performance of such workloads, this paper proposes cache replacement using Re-reference Interval Prediction (RRIP). We propose Static RRIP (SRRIP) that is scan-resistant and Dynamic RRIP (DRRIP) that is both scan-resistant and thrash-resistant. Both RRIP policies require only 2-bits per cache block and easily integrate into existing LRU approximations found in modern processors. Our evaluations using PC games, multimedia, server and SPEC CPU2006 workloads on a single-core processor with a 2MB last-level cache (LLC) show that both SRRIP and DRRIP outperform LRU replacement on the throughput metric by an average of 4% and 10% respectively. Our evaluations with over 1000 multi-programmed workloads on a 4-core CMP with an 8MB shared LLC show that SRRIP and DRRIP outperform LRU replacement on the throughput metric by an average of 7% and 9% respectively. We also show that RRIP outperforms LFU, the state-of the art scan-resistant replacement algorithm to-date. For the cache configurations under study, RRIP requires 2X less hardware than LRU and 2.5X less hardware than LFU.},
+	journal = {SIGARCH Comput. Archit. News},
+	month = jun,
+	pages = {60–71},
+	numpages = {12},
+	keywords = {scan resistance, shared cache, replacement, thrashing}
+}
+
+@INPROCEEDINGS{ship-micro-2011,  author={C. {Wu} and A. {Jaleel} and W. {Hasenplaugh} and M. {Martonosi} and S. C. {Steely} and J. {Emer}},  booktitle={2011 44th Annual IEEE/ACM International Symposium on Microarchitecture (MICRO)},   title={SHiP: Signature-based Hit Predictor for high performance caching},   year={2011},  volume={},  number={},  pages={430-441},  doi={}}
+
+@INPROCEEDINGS{ISCA-2006,  author={M. K. {Qureshi} and D. N. {Lynch} and O. {Mutlu} and Y. N. {Patt}},  booktitle={33rd International Symposium on Computer Architecture (ISCA'06)},   title={A Case for MLP-Aware Cache Replacement},   year={2006},  volume={},  number={},  pages={167-178},  doi={10.1109/ISCA.2006.5}}
+
+@ARTICLE{johnson-1999,  author={T. L. {Johnson} and D. A. {Connors} and M. C. {Merten} and W. -. W. {Hwu}},  journal={IEEE Transactions on Computers},   title={Run-time cache bypassing},   year={1999},  volume={48},  number={12},  pages={1338-1354},  doi={10.1109/12.817393}}
+
+@article{IATAC-2005,
+	author = {Abella, Jaume and Gonz\'{a}lez, Antonio and Vera, Xavier and O'Boyle, Michael F. P.},
+	title = {IATAC: A Smart Predictor to Turn-off L2 Cache Lines},
+	year = {2005},
+	issue_date = {March 2005},
+	publisher = {Association for Computing Machinery},
+	address = {New York, NY, USA},
+	volume = {2},
+	number = {1},
+	issn = {1544-3566},
+	url = {https://doi.org/10.1145/1061267.1061271},
+	doi = {10.1145/1061267.1061271},
+	abstract = {As technology evolves, power dissipation increases and cooling systems become more complex and expensive. There are two main sources of power dissipation in a processor: dynamic power and leakage. Dynamic power has been the most significant factor, but leakage will become increasingly significant in future. It is predicted that leakage will shortly be the most significant cost as it grows at about a 5\texttimes{} rate per generation. Thus, reducing leakage is essential for future processor design. Since large caches occupy most of the area, they are one of the leakiest structures in the chip and hence, a main source of energy consumption for future processors.This paper introduces IATAC (inter-access time per access count), a new hardware technique to reduce cache leakage for L2 caches. IATAC dynamically adapts the cache size to the program requirements turning off cache lines whose content is not likely to be reused. Our evaluation shows that this approach outperforms all previous state-of-the-art techniques. IATAC turns off 65% of the cache lines across different L2 cache configurations with a very small performance degradation of around 2%.},
+	journal = {ACM Trans. Archit. Code Optim.},
+	month = mar,
+	pages = {55–77},
+	numpages = {23},
+	keywords = {Cache memories, L2 cache, low power, turning off cache lines}
+}
+
+@article{acm-2005,
+	author = {Tarjan, David and Skadron, Kevin},
+	title = {Merging Path and Gshare Indexing in Perceptron Branch Prediction},
+	year = {2005},
+	issue_date = {September 2005},
+	publisher = {Association for Computing Machinery},
+	address = {New York, NY, USA},
+	volume = {2},
+	number = {3},
+	issn = {1544-3566},
+	url = {https://doi.org/10.1145/1089008.1089011},
+	doi = {10.1145/1089008.1089011},
+	abstract = {We introduce the hashed perceptron predictor, which merges the concepts behind the gshare, path-based and perceptron branch predictors. This predictor can achieve superior accuracy to a path-based and a global perceptron predictor, previously the most accurate dynamic branch predictors known in the literature. We also show how such a predictor can be ahead pipelined to yield one cycle effective latency. On the SPECint2000 set of benchmarks, the hashed perceptron predictor improves accuracy by up to 15.6% over a MAC-RHSP and 27.2% over a path-based neural predictor.},
+	journal = {ACM Trans. Archit. Code Optim.},
+	month = sep,
+	pages = {280–300},
+	numpages = {21},
+	keywords = {Branch prediction, neural networks, two-level predictors}
+}
+
+@INPROCEEDINGS{ieeeCAT-2000,  author={ {An-Chow Lai} and B. {Falsafi}},  booktitle={Proceedings of 27th International Symposium on Computer Architecture (IEEE Cat. No.RS00201)},   title={Selective, accurate, and timely self-invalidation using last-touch prediction},   year={2000},  volume={},  number={},  pages={139-148},  doi={10.1109/ISCA.2000.854385}}

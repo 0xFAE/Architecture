@@ -76,9 +76,9 @@ In addition to the sampling-based method, authors compare their work againt the 
 
 Most other publications has only considered enhancing prefetching methods or software-based approaches. We are focusing our 
 effort on improving replacement policies in I-cache and BTB based on dead-block prediction. When looking at recent work studying 
-the effect of replacement policy, not many were found or mostly gave poor results [21],[22] . Most of them focused on different approaches 
-such as recent static prediction [1] and using a hashed value for indexing branch predictors table [51]. Other works that studied dead-block 
-prediction mainly focused on using it in power reduction[44], cache optimization[46] or bypassing[33]. Hence, our efforts will be focus on studying the use of dead block prediction
+the effect of replacement policy, not many were found or mostly gave poor results \cite{ship-micro-2011, ISCA-2006} . Most of them focused on different approaches 
+such as recent static prediction \cite{rrip-2010} and using a hashed value for indexing branch predictors table \cite{acm-2005}. Other works that studied dead-block 
+prediction mainly focused on using it in power reduction \cite{IATAC-2005}, cache optimization \cite{ieeeCAT-2000} or bypassing \cite{johnson-1999}. Hence, our efforts will be focus on studying the use of dead block prediction
 in the I-cache and BTB. Different algorithms will be tested to be able to adapt the dead block information to BTB and I-cache replacement using open-source simulator.  
 
 \section{Proposed technique}
@@ -96,7 +96,9 @@ in the I-cache and BTB. Different algorithms will be tested to be able to adapt 
 \section{Estimated timeline}
 \label{sec:timeline}
 
-
+\begin{figure}[h]
+	\includegraphics[width=1\textwidth]{Timeline.PNG}
+\end{figure}
 
 
 {%\scriptsize
