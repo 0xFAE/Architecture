@@ -83,14 +83,15 @@ in the I-cache and BTB. Different algorithms will be tested to be able to adapt 
 
 \section{Proposed technique}
 \label{sec:proposed}
-1.	Find a proper open-source simulator that could be used to study BTB and I-cache.
-2.	Modify the simulator by adding appropriate code to collect the necessary data for studying
-3.	Implement a replacement algorithm that uses the past history to predict dead-blocks in cache and BTB
-4.	Implement a 64kB I-cache with a 64B block size.
-5.	Implement three prediction tables with 4096 entires and a two-bit counter per entry- it will be used for predicting the dead blocks and dead entries in BTB.
-6.	Measure performance of our modified simulator using LRU as baseline and studying MPKI values
-7.	Compare our modified simulator with another state of art approach by studying the MPKI values
-
+\begin{enumerate}
+	\item Find a proper open-source simulator that could be used to study BTB and I-cache.
+	\item Modify the simulator by adding appropriate code to collect the necessary data for studying
+	\item Implement a replacement algorithm that uses the past history to predict dead-blocks in cache and BTB
+	\item Implement a 64kB I-cache with a 64B block size.
+	\item Implement three prediction tables with 4096 entires and a two-bit counter per entry- it will be used for predicting the dead blocks and dead entries in BTB.
+	\item Measure performance of our modified simulator using LRU as baseline and studying MPKI values
+	\item Compare our modified simulator with another state of art approach by studying the MPKI values
+\end{enumerate}
 
 \section{Estimated timeline}
 \label{sec:timeline}
