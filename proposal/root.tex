@@ -45,9 +45,23 @@
 
 \section{Introduction} 
 The instruction cache (I-cache) stores blocks of recently used instructions, and the branch target buffer (BTB) caches targets of previously taken branches. 
-This means that the I-cache improves throughput and latency while the BTB latency due to branch target re-computation, making them both essential 
-The work in \cite{samira-ISCA18} explores efficient replacement policies at the I-cache and BTB levels.
+This means that the I-cache improves throughput and latency while the BTB latency due to branch target re-computation, making them both essential.
+The work in \cite{samira-ISCA18} explores efficient replacement policies at the I-cache and BTB levels. Authors propose a history-based algorithm that predicts
+dead blocks that should be evicted with no penalty since they are guaranteed that they won't be reused before eviction.
+
+Authors surveyed recent work on cache replacement and noticed that a common obervation in this research area is that sequences of recently accessed instructions
+correlate with the likelihood of block reuse. With this knowledge, they developed the Global History Reuse Prediction (GHRP) to predict reuse behaviors in I-cache and BTB.
+
+Authors evaluated seven recent replacement policies and discussed their effect on the I-cache and BTB hit rates and did a comparison based average MPKI values.
+Authors validated their work and run comparative analysis using benchmarks from the fifth Championship Branch Prediction Competition (CBP-5) \cite{cbp-5}.
+With their experimental evaluation, they were able to explain why sampling-based replacement policies failed to improve things on the I-cache and BTB level.
+
+For our final project, we would like to implement the GHRP replacement policy and run it through the CBP-5 benchmarks. Time allowing, we would like to compare our 
+results to one of the methods that the original paper compared againt.
 \section{Background}
+1. no much work has been done since [26]
+2. what others have done and why it's not as good
+3. authors discussed 7 methods 
 \section{Motivation}
 \section{Proposed technique}
 \section{Estimated timeline}
