@@ -38,12 +38,14 @@
 
 \begin{abstract}
 	For our final project, we will implement a global history replacement policy for instruction cache and branch target buffer.
-	The method was proven to lower instruction cache MPKI by an average of 18\% over the least recently-used policy, and it showed
+	The method was shown to lower instruction cache MPKI by an average of 18\% over the least recently-used policy, and it showed
 	similar improvements over several other policies.
 	We plan to implement and validate the results in the original work by comparing against at least one of the stated methods.
- \end{abstract}
+\end{abstract}
 
 \section{Introduction} 
+\label{sec:introduction}
+
 The instruction cache (I-cache) stores blocks of recently used instructions, and the branch target buffer (BTB) caches targets of previously taken branches. 
 This means that the I-cache improves throughput and latency while the BTB latency due to branch target re-computation, making them both essential.
 The work in \cite{samira-ISCA18} explores efficient replacement policies at the I-cache and BTB levels. Authors propose a history-based algorithm that predicts
@@ -58,20 +60,31 @@ With their experimental evaluation, they were able to explain why sampling-based
 
 For our final project, we would like to implement the GHRP replacement policy and run it through the CBP-5 benchmarks. Time allowing, we would like to compare our 
 results to one of the methods that the original paper compared againt.
-\section{Background}
-1. no much work has been done since [26]
-2. what others have done and why it's not as good
-3. authors discussed 7 methods 
-\section{Motivation}
-\section{Proposed technique}
-\section{Estimated timeline}
-\label{sec:related}
 
- 
+\section{Background}
+\label{sec:background}
+
+According to authors, not much work has been done to evaluate replacement policies on the I-cache and BTB level. Except for the work in \cite{smith-1985} that was done in the 80s
+with simpler policies like FIFO, and the work by Perleberg et al \cite{perleberg-1993} from the 90s, this is the first recent work to look at this problem from this angle.
+
+Authors discuss how different prediction replacement policies affect and are affected by the I-cache and BTB. In particulat, they showed how a sampling-based
+prediction policy that works well for PC-based dead block prediction, does not work as well in this area, due to the fact that a given PC only accesses one set at a time.
+In addition to the sampling-based method, authors compare their work againt the least recently-used (LRU) policy, the random policy, and the static re-reference predictor (SRRIP).
+
+\section{Motivation}
+\label{sec:motivation}
+
+\section{Proposed technique}
+\label{sec:proposed}
+
+\section{Estimated timeline}
+\label{sec:timeline}
+
+
 {%\scriptsize
-\bibliographystyle{abbrv}
-\bibliography{references}
-}
+	\bibliographystyle{abbrv}
+	\bibliography{references}
+	}
 
 \end{document}
 
