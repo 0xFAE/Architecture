@@ -1,6 +1,6 @@
 # configuration ---------------------------------------------------#
 
-document := root
+document := report
 latex := pdflatex
 
 # Document recipe -------------------------------------------------#
