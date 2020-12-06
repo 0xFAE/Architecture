@@ -50,13 +50,14 @@ over LRU policy on a 662 industrial workloads. In Zsim, LRU data is collected ov
 
 Current processors need efficient instruction fetch for high performance. There are two main structures that the processor rely on for efficient fetching: I-cache and branch
 target buffer. The instruction cache (I-cache) keeps record of recently used instructions, and the branch target buffer (BTB) caches targets of previously taken branches.
-Therefore, the I-cache helps in improving instruction throughput and latency. Branch target buffer improves latency because of branch target-recomputation. This paper [3] 
-explores efficient replacement policies at the I-cache and BTB levels. Samira et-al introduces a new idea for policy replacement called Graph History Reuse Prediction. This 
-algorithm is based on the history of past instruction addresses and behaviour in order to predict dead blocks in an efficient way. Predicting dead blocks is very important as
-they free up space for other blocks that might be used in the future. A block is said to be dead if it is not going to be used before eviction. A block is said to be live if it 
-is going to be used before eviction. Samira et-al have done a survey on the current implemented policies such as LRU, SSRIP..etc and tried to find a better policy. Most of the
-work on _cache optimization focused on instruction prefetching and block reordering. Many of these solutions didn’t lead to good  outcome as it resulted in large overhead or 
-high MPKI. Similarly, most of the work on BTB optimization focused on the design structure or using different replacement policy. Again, the results weren’t that satisfactory.
+Therefore, the I-cache helps in improving instruction throughput and latency. Branch target buffer improves latency because of branch target-recomputation. This 
+paper\cite{samira-ISCA18} explores efficient replacement policies at the I-cache and BTB levels. Samira et-al introduces a new idea for policy replacement called Graph History
+Reuse Prediction. This algorithm is based on the history of past instruction addresses and behaviour in order to predict dead blocks in an efficient way. Predicting dead blocks
+is very important as they free up space for other blocks that might be used in the future. A block is said to be dead if it is not going to be used before eviction. A block is 
+said to be live if it is going to be used before eviction. Samira et-al have done a survey on the current implemented policies such as LRU, SSRIP..etc and tried to find a 
+better policy. Most of the work on _cache optimization focused on instruction prefetching and block reordering. Many of these solutions didn’t lead to good  outcome as it 
+resulted in large overhead or high MPKI. Similarly, most of the work on BTB optimization focused on the design structure or using different replacement policy. Again, the 
+results weren’t that satisfactory. 
 Samira et-al first, tried to apply PC-based predictor that uses set-sampling for Cache behavior generalization, however, when being applied on I-cache and BTB, they haven’t 
 seen prominent results and hence, this idea was discarded. On the other side,  based on the survey done over all current replacement policies, they noted that that sequences of
 recently accessed instructions correlate with the likelihood of block reuse. Their proposes policy results in a prominent improvement in cache efficiency and overall 
