@@ -79,6 +79,37 @@ PARSEC.
 \subsection{Experimental Setup}
 
 \subsection{Experimental Results and Discussion}
+In order to compare the efficiency of the GHRP policy, it was implemented on two different simulators; Champ and Zsim. In the paper, Samira et al implement the policy using
+Champ and comparing it with other policies such as LRU, and SRRIP on industrial benchmarks. In our project, we tried implementing on Zsim and comparing the results against 
+SRRIP and LRU on PARSEC benchmark. Unfortunately, due to Zsim architecture and the way the policies are implemented. It was difficult to implement the GHRP policy in the 
+current Zsim architecture. We collected data from Samira et al as well as collected data from the  LRU AND SRRIP on PARSEC and we speculated the results by GHRP. In figure 1,
+It shows the results of the implementation of different policies on an 8-way 64KB I-cache with 64B blocks using Champ simulator. Figure 1 shows the results of these policies in
+relative to the MPKI of the LRU. On average of the 662 workloads, GHRP has a lower MPKI average of 0.86 compared with 1.02 for SRRIP and 1.10 for SDBP. By percentage, GHRP 
+improves the average MPKI by 18% over LRU and 12% over SRRIP. In the 2nd figure, Samira et al explored other configuration of the I-cache. In figure 2,  it shows various 
+combinations of 8KB,  16KB, 32KB and 64KB caches with 64B blocks with 4-way or 8-way associativity. It can be clearly seen how GHRP outperformed all other policies. LRU has
+performed the worst results by average of 10% less than other policies. GHRP has reduced the average of the MPKI by 14% compared to the LRU results.
+Using Zsim, GHRP is compared against LRU and SRRIP on PARSEC benchmark. The MPKI value is calculated using the following equations:  
+total misses = mGETS + mGETXIM + mGETXSM
+
+MPKI = (total misses/total instruction)*1000
+Where mGETS are misses of the GETS , mGETXIM are the
+misses of GETXI => M, and mGETXSM are the misses
+of the GETXS => M .
+
+\begin{figure}[h]
+	\includegraphics[width=1\textwidth]{MPKI1.PNG}
+	\includegraphics[width=1\textwidth]{MPKI2.PNG}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
 
 \begin{figure}[h]
 	\includegraphics[width=1\textwidth]{MPKI1.PNG}
