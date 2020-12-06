@@ -41,7 +41,8 @@ Many of the new-era processors support fetching instructions with instruction ca
 therefore, different types of replacement policies are being explored to reduce the misses in I-cache and BTB. In this project, we implement a new policy Global History Reuse 
 Prediction (GHRP), a replacement policy that uses the history of previous instructions and behaviour predict and evict dead blocks. GHRP is implemented in the main paper using
 Championship Branch Prediction simulator, but we try to implement it using Zsim to test the easiness of implementing the new policy in different simulators. GHRP’s performance
-is compared against the famous policy LRU (Least recently used). Using Championship simulator, GHRP reduces the I-cache misses (MPKI) by 18% over LRU policy on a 662 industrial workloads. In Zsim, LRU data is collected over PARSEC benchmark and the results are speculated from the Championship results.
+is compared against the famous policy LRU (Least recently used). Using Championship simulator, GHRP reduces the I-cache misses (MPKI) by 18% 
+over LRU policy on a 662 industrial workloads. In Zsim, LRU data is collected over PARSEC benchmark and the results are speculated from the Championship results.
 \end{abstract}
 
 \section{Introduction} 
