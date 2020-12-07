@@ -54,7 +54,7 @@ over LRU policy on a 662 industrial workloads. In Zsim, LRU data is collected ov
 Current processors need efficient instruction fetch for high performance. There are two main structures that the processor rely on for efficient fetching: I-cache and branch
 target buffer. The instruction cache (I-cache) keeps record of recently used instructions, and the branch target buffer (BTB) caches targets of previously taken branches.
 Therefore, the I-cache helps in improving instruction throughput and latency. Branch target buffer improves latency because of branch target-recomputation. This 
-paper\cite{samira-ISCA18} explores efficient replacement policies at the I-cache and BTB levels. Samira et-al introduces a new idea for policy replacement called Graph History
+paper \cite{samira-ISCA18} explores efficient replacement policies at the I-cache and BTB levels. Samira et-al introduces a new idea for policy replacement called Graph History
 Reuse Prediction. This algorithm is based on the history of past instruction addresses and behaviour in order to predict dead blocks in an efficient way. Predicting dead blocks
 is very important as they free up space for other blocks that might be used in the future. A block is said to be dead if it is not going to be used before eviction. A block is 
 said to be live if it is going to be used before eviction. Samira et-al have done a survey on the current implemented policies such as LRU, SSRIP..etc and tried to find a 
@@ -88,7 +88,7 @@ In addition to the sampling-based method, authors compare their work againt the 
 
 
 \section{Work Description}
-\label{sec:proposed}
+\label{sec:Work Description}
 The GHRP method uses past history to predict dead-blocks in the cache.
 It indexes a table of counters with a signature generated from features correlated with reuse behavior using the global path history
 of instruction addresses.
@@ -127,15 +127,13 @@ We did not get a chance to adapt the method for BTB replacement due to time rest
 \end{algorithm}
 
 \section{Evaluation}
-\label{sec:timeline}
+\label{sec:Evaluation}
 
 \subsection{Experimental Setup}
 We opted to implement the method in zsim since we were more familiar with the simulator, and we thought that the paper provided enough information to implement the method.
-However, we realized a bit late that this was not the case. Apart from the difference in data structures, certain components that are explicitely updated in the method were assumed
-to be computed by the Cache class in zsim, and thus outside of the scope of the replacement policy code.\par
-We were able to implement the code, but we were unable to link it to the Cache class properly to be able to run experiments. However, we are confident that we were close to having this working.
-In this section, we will discuss our expectations on how the results would have looked like, based on our results of running the LRU method.
-These are speculations done by comparing our LRU results to the paper's results.
+However, we realized a bit late that this was not the case. Apart from the difference in data structures, certain components that are explicitely updated in the method were assumed to be computed by the Cache class in zsim, and thus outside of the scope of the replacement policy code.\par
+We were able to implement the code, but we were unable to link it to the Cache class properly to be able to run experiments as it was difficult to adapt it to the current zsim architecture. 
+In this section, we will discuss the performance of GHRP compared to SRRIP and LRU polices over PARSEC benchmark. These are speculations done by comparing our LRU results to the paper's results.
 
 \subsection{Experimental Results and Discussion}
 In order to compare the efficiency of the GHRP policy, it was implemented on two different simulators; Champ and Zsim. In the paper, Samira et al implement the policy using
@@ -182,8 +180,9 @@ stay in cache before being evicted. Overall, GHRP better predict dead blocks tha
 \end{figure}
 
 \section{Conclusion and Future Work}
-We implemented the global history replacement policy in zsim and made enough progress to show that it is realizable in a different simulator than originally presented. However, due to time constraints, we were not able to finish the work on time to experimentally validate the method.
-Based on the results in the paper, it would be worthwhile to finish the implementation and compare the performance of GHRP in zsim to the performance reported with the CBP5 simulator.
+We implemented the global history replacement policy in zsim and made enough progress to show that it is realizable in a different simulator than originally presented. However, due to zsim setup and the time constraint, it wasn't very easy to implement GHRP in a way that's adaptable to the current architecture. However, we still implemenetd the algorithms fully in zsim as shown in the pseudocode. 
+Based on the results in the paper and the extrapolation done, it is clearly shown that GHRP outperforms all the other policies. In this project, we compared it against LRU and SRRIP, and GHRP shown a better performance by reduing the MPKI by average of 10%.
+For future work, it would be great to try implementting the policy on other tools other than zsim and Championship and tests its performance on other benchmarks as well. 
 
 {%\scriptsize
 	\bibliographystyle{abbrv}
