@@ -1,5 +1,7 @@
 \documentclass[11pt]{article}
 \usepackage{algorithm}
+\usepackage{setspace}
+\usepackage{pdfpages}
 \usepackage{algpseudocode}
 \usepackage{amsmath, amssymb, amsfonts}
 \usepackage[english]{babel}
@@ -19,9 +21,9 @@
 \textheight=9.5in
 
 \pagestyle{empty}
-
+\doublespacing
 \begin{document}
-
+\includepdf[pages={1}]{eval-form.pdf}
 \centerline{CSCE 614 (Fall 2020) \hfill Uwacu and Elsheimy}
 \medskip
 \centerline{\bf Computer Architecture}
@@ -143,25 +145,37 @@ SRRIP and LRU on PARSEC benchmark. Unfortunately, due to Zsim architecture and t
 current Zsim architecture. We collected data from Samira et al as well as collected data from the  LRU AND SRRIP on PARSEC and we speculated the results by GHRP. In figure 1,
 It shows the results of the implementation of different policies on an 8-way 64KB I-cache with 64B blocks using Champ simulator. Figure 1 shows the results of these policies in
 relative to the MPKI of the LRU. On average of the 662 workloads, GHRP has a lower MPKI average of 0.86 compared with 1.02 for SRRIP and 1.10 for SDBP. By percentage, GHRP 
-improves the average MPKI by 18% over LRU and 12% over SRRIP. In the 2nd figure, Samira et al explored other configuration of the I-cache. In figure 2,  it shows various 
+improves the average MPKI by 18\% over LRU and 12\% over SRRIP. In the 2nd figure, Samira et al explored other configuration of the I-cache. In figure 2,  it shows various 
 combinations of 8KB,  16KB, 32KB and 64KB caches with 64B blocks with 4-way or 8-way associativity. It can be clearly seen how GHRP outperformed all other policies. LRU has
-performed the worst results by average of 10% less than other policies. GHRP has reduced the average of the MPKI by 14% compared to the LRU results.
+performed the worst results by average of 10\% less than other policies. GHRP has reduced the average of the MPKI by 14\% compared to the LRU results.
 Using Zsim, GHRP is compared against LRU and SRRIP on PARSEC benchmark. The MPKI value is calculated using the following equations:  
+\begin{equation}
 total misses = mGETS + mGETXIM + mGETXSM
+\end{equation}
 
+\begin{equation}
 MPKI = (total misses/total instruction)*1000
+\end{equation}
+
 Where mGETS are misses of the GETS , mGETXIM are the
 misses of GETXI => M, and mGETXSM are the misses
 of the GETXS => M .
 
 \begin{figure}[h]
+	\caption{Average difference relative to LRU}
+	\label{fig:fig1}
 	\includegraphics[width=1\textwidth]{report1.PNG}
+\end{figure}
+
+\begin{figure}[h]
+	\caption{Average MPKI for multiple I-cache configurations}
+	\label{figs:fig2}
 	\includegraphics[width=1\textwidth]{reportresult.PNG}
 \end{figure}
 
 Figures 3 and 4 display the results of the policies over the PARSEC benchmarks. The value of the MPKI for each policy was calculated using the above mentioned equations and
-recorded in figure 3. It can be clearly shown the LRU has done the worst compared to all of them. SRRIP has done better than LRU by average of 10%. According to Samira’s 
-results, the GHRP is expected to outperform both LRU and SRRIP by average of 8% when compared with the previous results from figures 1 and 2. 
+recorded in figure 3. It can be clearly shown the LRU has done the worst compared to all of them. SRRIP has done better than LRU by average of 10\%. According to Samira’s 
+results, the GHRP is expected to outperform both LRU and SRRIP by average of 8\% when compared with the previous results from figures 1 and 2. 
 The analysis behind such results is due to the algorithm and the core idea of GHRP. GHRP targets the removal of dead blocks/BTB entries by using the history of past 
 instructions addresses and behavior. LRU just uses information based on the last recently used block, which isn’t really efficient to detect dead blocks especially when it does
 not think that the most recent entry will be re-referenced in
@@ -176,7 +190,14 @@ it to data from previous history. The final prediction is passed by majority vot
 stay in cache before being evicted. Overall, GHRP better predict dead blocks than SRRIP and LRU. 
 
 \begin{figure}[h]
+	\caption{PARSEC benchmark results}
+	\label{figs:fig3}
 	\includegraphics[width=1\textwidth]{MPKI1.PNG}
+\end{figure}
+
+\begin{figure}[h]
+	\caption{MPKI for PARSEC benchmarks}
+	\label{figs:fig4}
 	\includegraphics[width=1\textwidth]{MPKI2.PNG}
 \end{figure}
 
