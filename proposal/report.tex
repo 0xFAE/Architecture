@@ -45,8 +45,8 @@
 Many of the new-era processors support fetching instructions with instruction cache and branch target buffer. I-Cache and branch target buffer have limited capacities and
 therefore, different types of replacement policies are being explored to reduce the misses in I-cache and BTB. In this project, we implement a new policy Global History Reuse 
 Prediction (GHRP), a replacement policy that uses the history of previous instructions and behaviour predict and evict dead blocks. GHRP is implemented in the main paper using
-Championship Branch Prediction simulator, but we try to implement it using Zsim to test the easiness of implementing the new policy in different simulators. GHRP’s performance
-is compared against the famous policy LRU (Least recently used) and SRRIP(static re-reference interval prediction). Using Championship simulator, GHRP reduces the I-cache misses (MPKI) by 18% 
+Championship Branch Prediction simulator, but we try to implement it using Zsim to test the easiness of implementing the new policy in different simulators. GHRP’s 
+performance is compared against the famous policy LRU (Least recently used) and SRRIP(static re-reference interval prediction). Using Championship simulator, GHRP reduces the I-cache misses (MPKI) by 18% 
 over LRU policy on a 662 industrial workloads. In Zsim, LRU data is collected over PARSEC benchmark and the results are speculated from the Championship results.
 \end{abstract}
 
@@ -184,6 +184,14 @@ not think that the most recent entry will be re-referenced in
 the near-immediate future. 
 In result, LRU is inefficient especially with applications that its referenced mainly in the distant future. LRU replaces the blocks very 
 frequently. 
+
+\begin{figure}[h]
+	\caption{PARSEC benchmark results}
+	\label{figs:fig3}
+	\includegraphics[width=1\textwidth]{MPKI1.PNG}
+\end{figure}
+
+
  SSRIP uses lower hardware overhead and deals better with applications with larger working sets and applications with references in the distant future than LRU. SSRIP has two 
 kinds of priorities: Hit priority and Frequency priority. 
 For this project, the Hit priority one was implemented. Therefore, it can be deduced that many of the PARSEC 
@@ -194,11 +202,7 @@ it to data from previous history. The final prediction is passed by majority vot
 stay in cache before being evicted. 
 Overall, GHRP better predict dead blocks than SRRIP and LRU. 
 
-\begin{figure}[h]
-	\caption{PARSEC benchmark results}
-	\label{figs:fig3}
-	\includegraphics[width=1\textwidth]{MPKI1.PNG}
-\end{figure}
+
 
 \begin{figure}[h]
 	\caption{MPKI for PARSEC benchmarks}
