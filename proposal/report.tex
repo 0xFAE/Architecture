@@ -68,7 +68,7 @@ simulator. We have tried applying it on Zsim to test the ease of implementation 
 PARSEC.
 
 
-\section{Background - Diane}
+\section{Background}
 \label{sec:background}
 
 Most other publications has only considered enhancing prefetching methods or software-based approaches. We are focusing our 
@@ -86,7 +86,7 @@ prediction policy that works well for PC-based dead block prediction, does not w
 In addition to the sampling-based method, authors compare their work againt the least recently-used (LRU) policy, the random policy, and the static re-reference predictor (SRRIP).
 
 
-\section{Work Description -Diane}
+\section{Work Description}
 \label{sec:proposed}
 The GHRP method uses past history to predict dead-blocks in the cache.
 It indexes a table of counters with a signature generated from features correlated with reuse behavior using the global path history
@@ -101,8 +101,8 @@ The method was implemented using a simulator that we were not familiar with, so 
 Algorithm \ref{alg1} describes our implementation. We split Algorithm 1 of \cite{samira-ISCA18} into three procedures that are required to use the Cache classes in zsim.\par
 
 The update() function is used in zsim to update the prediction tables after a hit. In our implementation, we called updatePredTables() without flagging that the block is dead, as detailed in Algorithm 1 of \cite{samira-ISCA18}. 
-The replaced() function is used in zsim to replace ..... In our implementation, we called updatePredTables(), and this time we that the block is dead, as detailed in Algorithm 1 of \cite{samira-ISCA18}.
-The rank() function is used in zsim to ..... In our implementation, we used the MajorityVote() function detailed in Algorithm 1 of \cite{samira-ISCA18} that is used to .....\par
+The replaced() function is used in zsim to replace In our implementation, we called updatePredTables(), and this time we that the block is dead, as detailed in Algorithm 1 of \cite{samira-ISCA18}.
+The rank() function is used in zsim to rank replacement cadidates. In our implementation, we used the MajorityVote() function detailed in Algorithm 1 of \cite{samira-ISCA18} that is used on the hashed indices from the three prediction tables to find a block to update or replace depending on how the flag is set.\par
 
 To fall back to a LRU replacement when there is no block picked by the GHRP method, we added an implementation of LRU replacement in our implementation.
 We did not get a chance to adapt the method for BTB replacement due to time restrictions.
