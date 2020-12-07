@@ -99,11 +99,11 @@ With a 64kB I-cache with a 64B block size, we created three prediction tables wi
 
 Our plan was to implement the Global History Replacement Policy (GHRP) method as described in the paper, and assess its performance by comparing it to the LRU method.
 The method was implemented using a simulator that we were not familiar with, so we decided to implement the logic in the zsim simulator instead.
-Algorithm \ref{alg1} describes our implementation. We split Algorithm 1 of \cite{samira-ISCA18} into three procedures that are required to use the Cache classes in zsim.\par
+Algorithm \ref{alg:alg1} describes our implementation. We split Algorithm 1 of \cite{samira-ISCA18} into three procedures that are required to use the Cache classes in zsim.\par
 
 The update() function is used in zsim to update the prediction tables after a hit. In our implementation, we called updatePredTables() without flagging that the block is dead, as detailed in Algorithm 1 of \cite{samira-ISCA18}. 
 The replaced() function is used in zsim to replace In our implementation, we called updatePredTables(), and this time we that the block is dead, as detailed in Algorithm 1 of \cite{samira-ISCA18}.
-The rank() function is used in zsim to rank replacement cadidates. In our implementation, we used the MajorityVote() function detailed in Algorithm 1 of \cite{samira-ISCA18} that is used on the hashed indices from the three prediction tables to find a block to update or replace depending on how the flag is set.\par
+The rank() function is used in zsim to rank replacement cadidates. We didn't need it in our implementation, since we called the MajorityVote() function detailed in Algorithm 1 of \cite{samira-ISCA18} that is used on the hashed indices from the three prediction tables to find a block to update or replace depending on how the flag is set.\par
 
 To fall back to a LRU replacement when there is no block picked by the GHRP method, we added an implementation of LRU replacement in our implementation.
 We did not get a chance to adapt the method for BTB replacement due to time restrictions.
@@ -112,16 +112,21 @@ We did not get a chance to adapt the method for BTB replacement due to time rest
 	\label{alg:alg1}
 	\caption{GHRP}
 	\begin{algorithmic}[1]
-		\renewcommand{\algorithmicrequire}{\textbf{Input: PC}}
+		\renewcommand{\algorithmicrequire}{\textbf{Input: address}}
 		%\REQUIRE int PC
-		\Procedure{update}{id, req}
-		\State{${\tt UpdatePredTable}(id, req)$}
+		\Procedure{update}{uint32\_t id, MemReq* req}
+		\State{$sign \leftarrow {\tt Signature}(id, req)$}
+		\State{$indices \leftarrow {\tt ComputeIndices}(sign)$}
+		\State{$bool isDead = false$}
+		\State{${\tt UpdatePredTable}(indices, isDead)$}
 		\EndProcedure
-		\Procedure{replaced}{id, req}
-		\State{${\tt UpdatePredTable}(id, req)$}
-		\EndProcedure
-		\Procedure{rank}{id, req}
-		\State{${\tt UpdatePredTable}(id, req)$}
+		\Procedure{replaced}{uint32\_t id}
+		\State{$sign \leftarrow {\tt Signature}(id, req)$}
+		\State{$indices \leftarrow {\tt ComputeIndices}(sign)$}
+		\State{$bool isDead = false$}
+		\State{${\tt UpdatePredTable}(indices, isDead)$}
+		\State{$pred \leftarrow {\tt MajorityVote}(indices)$}
+		\State{$array[id] = pred$}
 		\EndProcedure
 	\end{algorithmic}
 \end{algorithm}
