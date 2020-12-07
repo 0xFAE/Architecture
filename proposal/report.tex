@@ -46,7 +46,7 @@ Many of the new-era processors support fetching instructions with instruction ca
 therefore, different types of replacement policies are being explored to reduce the misses in I-cache and BTB. In this project, we implement a new policy Global History Reuse 
 Prediction (GHRP), a replacement policy that uses the history of previous instructions and behaviour predict and evict dead blocks. GHRP is implemented in the main paper using
 Championship Branch Prediction simulator, but we try to implement it using Zsim to test the easiness of implementing the new policy in different simulators. GHRP’s 
-performance is compared against the famous policy LRU (Least recently used) and SRRIP(static re-reference interval prediction). Using Championship simulator, GHRP reduces the I-cache misses (MPKI) by 18% 
+performance is compared against the famous policy LRU (Least recently used) and SRRIP(static re-reference interval prediction). Using Championship simulator, GHRP reduces the I-cache misses (MPKI) by 18\% 
 over LRU policy on a 662 industrial workloads. In Zsim, LRU data is collected over PARSEC benchmark and the results are speculated from the Championship results.
 \end{abstract}
 
@@ -212,7 +212,7 @@ Overall, GHRP better predict dead blocks than SRRIP and LRU.
 
 \section{Conclusion and Future Work}
 We implemented the global history replacement policy in zsim and made enough progress to show that it is realizable in a different simulator than originally presented. However, due to zsim setup and the time constraint, it wasn't very easy to implement GHRP in a way that's adaptable to the current architecture. However, we still implemenetd the algorithms fully in zsim as shown in the pseudocode. 
-Based on the results in the paper and the extrapolation done, it is clearly shown that GHRP outperforms all the other policies. In this project, we compared it against LRU and SRRIP, and GHRP shown a better performance by reduing the MPKI by average of 10%.
+Based on the results in the paper and the extrapolation done, it is clearly shown that GHRP outperforms all the other policies. In this project, we compared it against LRU and SRRIP, and GHRP shown a better performance by reduing the MPKI by average of 10\%.
 For future work, it would be great to try implementting the policy on other tools other than zsim and Championship and tests its performance on other benchmarks as well. 
 
 {%\scriptsize
