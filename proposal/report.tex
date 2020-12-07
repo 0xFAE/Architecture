@@ -130,11 +130,9 @@ We did not get a chance to adapt the method for BTB replacement due to time rest
 
 \subsection{Experimental Setup - Diane}
 We opted to implement the method in zsim since we were more familiar with the simulator, and we thought that the paper provided enough information to implement the method.
-However, we realized a bit late that this was not the case. Apart from the difference in data structures, certain components that are explicitely updated in the method were assumed
-to be computed by the Cache class in zsim, and thus outside of the scope of the replacement policy code.\par
-We were able to implement the code, but we were unable to link it to the Cache class properly to be able to run experiments. However, we are confident that we were close to having this working.
-In this section, we will discuss our expectations on how the results would have looked like, based on our results of running the LRU and SRRIP policies.
-These are speculations done by comparing our LRU results to the paper's results.
+However, we realized a bit late that this was not the case. Apart from the difference in data structures, certain components that are explicitely updated in the method were assumed to be computed by the Cache class in zsim, and thus outside of the scope of the replacement policy code.\par
+We were able to implement the code, but we were unable to link it to the Cache class properly to be able to run experiments as it was difficult to adapt it to the current zsim architecture. 
+In this section, we will discuss the performance of GHRP compared to SRRIP and LRU polices over PARSEC benchmark. These are speculations done by comparing our LRU results to the paper's results.
 
 \subsection{Experimental Results and Discussion}
 In order to compare the efficiency of the GHRP policy, it was implemented on two different simulators; Champ and Zsim. In the paper, Samira et al implement the policy using
