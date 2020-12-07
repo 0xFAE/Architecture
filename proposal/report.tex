@@ -1,4 +1,6 @@
 \documentclass[11pt]{article}
+\usepackage{algpseudocode}
+\usepackage{amsmath, amssymb, amsfonts}
 \usepackage[english]{babel}
 \usepackage{inputenc}
 \usepackage{multicol}
@@ -43,21 +45,79 @@
 \label{sec:introduction}
 
 
-\section{Background}
+\section{Background - Diane}
 \label{sec:background}
 
+Most other publications has only considered enhancing prefetching methods or software-based approaches. We are focusing our 
+effort on improving replacement policies in I-cache and BTB based on dead-block prediction. When looking at recent work studying 
+the effect of replacement policy, not many were found or mostly gave poor results \cite{ship-micro-2011, ISCA-2006} . Most of them focused on different approaches 
+such as recent static prediction \cite{rrip-2010} and using a hashed value for indexing branch predictors table \cite{acm-2005}. Other works that studied dead-block 
+prediction mainly focused on using it in power reduction \cite{IATAC-2005}, cache optimization \cite{ieeeCAT-2000} or bypassing \cite{johnson-1999}. Hence, our efforts will be focus on studying the use of dead block prediction
+in the I-cache and BTB. Different algorithms will be tested to be able to adapt the dead block information to BTB and I-cache replacement using open-source simulator.  
 
-\section{Work Description}
+According to authors, not much work has been done to evaluate replacement policies on the I-cache and BTB level. Except for the work in \cite{smith-1985} that was done in the 80s
+with simpler policies like FIFO, and the work by Perleberg et al \cite{perleberg-1993} from the 90s, this is the first recent work to look at this problem from this angle.
+
+Authors discuss how different prediction replacement policies affect and are affected by the I-cache and BTB. In particulat, they showed how a sampling-based
+prediction policy that works well for PC-based dead block prediction, does not work as well in this area, due to the fact that a given PC only accesses one set at a time.
+In addition to the sampling-based method, authors compare their work againt the least recently-used (LRU) policy, the random policy, and the static re-reference predictor (SRRIP).
+
+
+\section{Work Description -Diane}
 \label{sec:proposed}
+The GHRP method uses past history to predict dead-blocks in the cache.
+It indexes a table of counters with a signature generated from features correlated with reuse behavior using the global path history
+of instruction addresses.
+The global history is updated by shifting three lowest-order bits of the PC, and the signature is found by exclusive-ORing the history with the PC.
+GHRP uses three hash tables that provide a prediction via majority vote.
+With a 64kB I-cache with a 64B block size, we created three prediction tables with 4096 entires and a two-bit counter per entry.
+\par
+
+Our plan was to implement the Global History Replacement Policy (GHRP) method as described in the paper, and assess its performance by comparing it to the LRU method.
+The method was implemented using a simulator that we were not familiar with, so we decided to implement the logic in the zsim simulator instead.
+Algorithm \ref{alg1} describes our implementation. We split Algorithm 1 of \cite{samira-ISCA18} into three procedures that are required to use the Cache classes in zsim.\par
+
+The update() function is used in zsim to update the prediction tables after a hit. In our implementation, we called updatePredTables() without flagging that the block is dead, as detailed in Algorithm 1 of \cite{samira-ISCA18}. 
+The replaced() function is used in zsim to replace ..... In our implementation, we called updatePredTables(), and this time we that the block is dead, as detailed in Algorithm 1 of \cite{samira-ISCA18}.
+The rank() function is used in zsim to ..... In our implementation, we used the MajorityVote() function detailed in Algorithm 1 of \cite{samira-ISCA18} that is used to .....\par
+
+To fall back to a LRU replacement when there is no block picked by the GHRP method, we added an implementation of LRU replacement in our implementation.
+We did not get a chance to adapt the method for BTB replacement due to time restrictions.
+%%% Algorithm 1 Pseudocode
+%\begin{algorithm}[h]
+	%\label{alg:alg1}
+	\begin{algorithmic}[1]
+	%\caption{GHRP}
+		\renewcommand{\algorithmicrequire}{\textbf{Input: PC}}
+		%\REQUIRE int PC
+		\Procedure{update}{id, req}
+		\State{${\tt UpdatePredTable}(id, req)$}
+		\EndProcedure
+		\Procedure{replaced}{id, req}
+		\State{${\tt UpdatePredTable}(id, req)$}
+		\EndProcedure
+		\Procedure{rank}{id, req}
+		\State{${\tt UpdatePredTable}(id, req)$}
+		\EndProcedure
+	\end{algorithmic}
+%\end{algorithm}
 
 \section{Evaluation}
 \label{sec:timeline}
 
-\subsection{Experimental Setup}
+\subsection{Experimental Setup - Diane}
+We opted to implement the method in zsim since we were more familiar with the simulator, and we thought that the paper provided enough information to implement the method.
+However, we realized a bit late that this was not the case. Apart from the difference in data structures, certain components that are explicitely updated in the method were assumed
+to be computed by the Cache class in zsim, and thus outside of the scope of the replacement policy code.\par
+We were able to implement the code, but we were unable to link it to the Cache class properly to be able to run experiments. However, we are confident that we were close to having this working.
+In this section, we will discuss our expectations on how the results would have looked like, based on our results of running the LRU method.
+These are speculations done by comparing our LRU results to the paper's results.
 
 \subsection{Experimental Results and Discussion}
 
-\section{Conslusion and Future Work}
+\section{Conclusion and Future Work}
+We implemented the global history replacement policy in zsim and made enough progress to show that it is realizable in a different simulator than originally presented. However, due to time constraints, we were not able to finish the work on time to experimentally validate the method.
+Based on the results in the paper, it would be worthwhile to finish the implementation and compare the performance of GHRP in zsim to the performance reported with the CBP5 simulator.
 
 {%\scriptsize
 	\bibliographystyle{abbrv}
