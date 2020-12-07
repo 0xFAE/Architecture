@@ -72,19 +72,15 @@ PARSEC.
 \section{Background}
 \label{sec:background}
 
-Most other publications has only considered enhancing prefetching methods or software-based approaches. We are focusing our 
-effort on improving replacement policies in I-cache and BTB based on dead-block prediction. When looking at recent work studying 
-the effect of replacement policy, not many were found or mostly gave poor results \cite{ship-micro-2011, ISCA-2006} . Most of them focused on different approaches 
-such as recent static prediction \cite{rrip-2010} and using a hashed value for indexing branch predictors table \cite{acm-2005}. Other works that studied dead-block 
-prediction mainly focused on using it in power reduction \cite{IATAC-2005}, cache optimization \cite{ieeeCAT-2000} or bypassing \cite{johnson-1999}. Hence, our efforts will be focus on studying the use of dead block prediction
-in the I-cache and BTB. Different algorithms will be tested to be able to adapt the dead block information to BTB and I-cache replacement using open-source simulator.  
+When looking at previous publications, they have only focused on enhancing prefetching methods or software-based approaches. In this project, We are focusing our 
+effort on improving replacement policies in I-cache and BTB based on dead-block prediction. Recently, many studies are based on the effect of replacement policy, not many were found or mostly gave poor results \cite{ship-micro-2011, ISCA-2006} . They implemented different approaches such as recent static prediction \cite{rrip-2010} and using a hashed value for indexing branch predictors table \cite{acm-2005}. Other works that studied dead-block prediction mainly focused on using it in power reduction \cite{IATAC-2005}, cache optimization \cite{ieeeCAT-2000} or bypassing \cite{johnson-1999}. Therefore, our efforts will be focused on studying the use of dead block prediction
+in the I-cache and BTB. Different algorithms will be tested to be able to adapt the dead block information to BTB and I-cache replacement using Zsim as we are most familiar with.  
 
-According to authors, not much work has been done to evaluate replacement policies on the I-cache and BTB level. Except for the work in \cite{smith-1985} that was done in the 80s
-with simpler policies like FIFO, and the work by Perleberg et al \cite{perleberg-1993} from the 90s, this is the first recent work to look at this problem from this angle.
+In this paper \cite{samira-ISCA18}, Samira et al have surveyed several replacemenet policies as not much work has been done to evaluate thems on the I-cache and BTB level. Except for the work in \cite{smith-1985} that was done in the 80s with simpler policies like FIFO, and the work by Perleberg et al \cite{perleberg-1993} from the 90s, this is the first recent work to look at this problem from this angle.
 
-Authors discuss how different prediction replacement policies affect and are affected by the I-cache and BTB. In particulat, they showed how a sampling-based
+Authors discuss how different prediction replacement policies affect and are affected by the I-cache and BTB. In particular, they showed how a sampling-based
 prediction policy that works well for PC-based dead block prediction, does not work as well in this area, due to the fact that a given PC only accesses one set at a time.
-In addition to the sampling-based method, authors compare their work againt the least recently-used (LRU) policy, the random policy, and the static re-reference predictor (SRRIP).
+In addition to the sampling-based method, authors compare their work againt the least recently-used (LRU) policy, the random policy, and the static re-reference interval policy (SRRIP).
 
 
 \section{Work Description}
